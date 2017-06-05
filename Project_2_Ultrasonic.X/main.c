@@ -9,6 +9,10 @@
 #include <stdlib.h>
 //#include <proc/p32mx460f512l.h>
 #include <sys/attribs.h>
+
+/******************************************************************************/
+/* Clock Setup                                                                */
+/******************************************************************************/
 // Clock Configuration - Taken from the other board's notes
 // Oscillator Settings
 #pragma config FNOSC        = PRIPLL
@@ -31,90 +35,45 @@
 /* Global Variable Declaration                                                */
 /******************************************************************************/
 int i;
-/* i.e. uint32_t <variable_name>; */
-/******************************************************************************/
-/* Main Program                                                               */
-/******************************************************************************/
-void SetUpLEDPort(void){
-    TRISBbits.TRISB10 = 0;
-    TRISBbits.TRISB11 = 0;
-    TRISBbits.TRISB12 = 0;
-    TRISBbits.TRISB13 = 0;
-    PORTBbits.RB10 = 0;
-    PORTBbits.RB11 = 0;
-    PORTBbits.RB12 = 0;
-    PORTBbits.RB13 = 0;
-}
+int32_t count = 0;
+int32_t count0 = 0;
+double Count_Value = 0;
+int32_t Buff[300];
+// Calibrations found experimentally. 
+#define C_M (double) 0.0055 
+#define C_B (double) 0.4091
 
-
+/******************************************************************************/
+/* Function Definition                                                        */
+/******************************************************************************/
 void SimpleCounterDelay(int CountLimit){
     int x;
     for (x = 0; x < CountLimit; x++){
     }  
 }
 
-
-void TurnOnLED(int LedNum){
- 
-    switch(LedNum){
-        case 1:
-            PORTBSET = 1 << 10;
-            break;
-        case 2: 
-            PORTBSET = 1 << 11;
-            break;
-        case 3:
-            PORTBSET = 1 << 12;
-            break;
-        case 4:
-            PORTBSET = 1 << 13;   
-            break;
-    }            
-}
-
-void TurnOffLED(int LedNum){
-    switch(LedNum){
-        case 1:
-            PORTBCLR = 1 << 10;
-            break;
-        case 2: 
-            PORTBCLR = 1 << 11;
-            break;
-        case 3:
-            PORTBCLR = 1 << 12;
-            break;
-        case 4:
-            PORTBCLR = 1 << 13;  
-            break;
-    }            
-}
-int32_t count = 0;
-int32_t count0 = 0;
-int32_t Count_Value = 0;
-int32_t Buff[300];
+/******************************************************************************/
+/* Main Program                                                               */
+/******************************************************************************/
 int32_t main(void)
 {
-//    PMCON = 0x0000; //Stop and clear the PMP module.
-//    PMMODE = WAITE & (WAITM << 2) & (WAITB << 6) & (MODE << 8) & (MODE16 << 10) & (INCM << 11) & (IRQM << 13); //Setup PMMODE register
-//    PMCONSET = ON; // Turn on the PMP Module.
+
     TRISB = 0x0000;
     PORTB = 0x0000;
     while (1){
         count = 0;
-        count0 = 0;
         TRISBCLR = 1; //configures RB0 as output.
         LATBSET = 1; //Drive Pin RB0.
         SimpleCounterDelay(1000); // Simple Delay.
         LATBCLR = 1; //Turn Off Pin RB0.
         TRISBSET = 1;    //configure RB0 as input.
         AD1PCFGSET = 1; //configure RB0 as digital pin.
-        while (PORTBbits.RB0 == 0) {
-        count0++;
+        while (PORTBbits.RB0 == 0) {} // Wait Until Ultrasonic Sensor Pulse Is Generated
+        while (PORTBbits.RB0 == 1){ //Wait until pulse bounces back.
+            count++;  //Counts that pin is held high.
         }
-        while (PORTBbits.RB0 == 1){
-            count++;
-        }
-        Count_Value = count;
-        SimpleCounterDelay(800000);
+        Count_Value = count * C_M + C_B; //First round calibration. Output Units Inchs.
+        //Currently calibration does not consider Ambient impacts to accuracy.
+        SimpleCounterDelay(800000); // Delay until next measurement is taken.
     }
 }
