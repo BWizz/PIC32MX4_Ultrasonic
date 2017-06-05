@@ -9,6 +9,24 @@
 #include <stdlib.h>
 //#include <proc/p32mx460f512l.h>
 #include <sys/attribs.h>
+// Clock Configuration - Taken from the other board's notes
+// Oscillator Settings
+#pragma config FNOSC        = PRIPLL
+#pragma config POSCMOD      = EC
+#pragma config FPLLIDIV     = DIV_2
+#pragma config FPLLMUL      = MUL_20
+#pragma config FPLLODIV     = DIV_1
+#pragma config FPBDIV       = DIV_8
+#pragma config FSOSCEN      = OFF
+
+//  Clock Control
+#pragma config IESO         = OFF
+#pragma config FCKSM        = CSDCMD
+#pragma config OSCIOFNC     = OFF
+
+// Lee made this one change.
+
+
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
@@ -71,6 +89,7 @@ void TurnOffLED(int LedNum){
     }            
 }
 int32_t count = 0;
+int32_t count0 = 0;
 int32_t Count_Value = 0;
 int32_t Buff[300];
 int32_t main(void)
@@ -81,18 +100,21 @@ int32_t main(void)
     TRISB = 0x0000;
     PORTB = 0x0000;
     while (1){
+        count = 0;
+        count0 = 0;
         TRISBCLR = 1; //configures RB0 as output.
         LATBSET = 1; //Drive Pin RB0.
-        SimpleCounterDelay(100000); // Simple Delay.
+        SimpleCounterDelay(1000); // Simple Delay.
+        LATBCLR = 1; //Turn Off Pin RB0.
         TRISBSET = 1;    //configure RB0 as input.
         AD1PCFGSET = 1; //configure RB0 as digital pin.
-        while (PORTB & 0x00000000) {}
-        while (PORTB & 1){
+        while (PORTBbits.RB0 == 0) {
+        count0++;
+        }
+        while (PORTBbits.RB0 == 1){
             count++;
         }
         Count_Value = count;
-        count = 0;
-        Count_Value = 0;
-        SimpleCounterDelay(100000);
+        SimpleCounterDelay(800000);
     }
 }
