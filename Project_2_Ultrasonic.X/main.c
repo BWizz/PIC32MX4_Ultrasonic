@@ -1,30 +1,33 @@
 /******************************************************************************/
 /*  Files to Include                                                          */
 /******************************************************************************/
-#ifdef __XC32
-    #include <xc.h>          /* Defines special funciton registers, CP0 regs  */
-#endif
 
+#include <xc.h>          /* Defines special funciton registers, CP0 regs  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/attribs.h>
 #include "ping_ultrasonic.h"
 #include "pic32mx4_init.h"
+#include "pic32mx4_timers.h"
 
-void clock_init(void);
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
 double Distance;
+uint32_t Distance_v2;
+#define CONV_FAC (1/(8000000) * 340.29) / 39.3701
 
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
-int32_t main(void)
+void main(void)
 {
     Ultrasonic_Init();
+    Timer4_32bit_Syn_Init();
     while (1){
-        Distance = MeasureDistance();
-        int x = 1; // This is only hear for a break point for debugging.
+     Distance = MeasureDistance();
+     SimpleCounterDelay(1000000);
+     Distance_v2 = MeasureDistance_v2();
+     int x = 1; // This is only hear for a break point for debugging.
     }
 }
