@@ -14,8 +14,11 @@
 #pragma config POSCMOD      = EC
 #pragma config FPLLIDIV     = DIV_2
 #pragma config FPLLMUL      = MUL_20
-#pragma config FPLLODIV     = DIV_1
-#pragma config FPBDIV       = DIV_8
+#pragma config FPLLODIV     = DIV_2
+// Program time configuration for PBCLK. PBCLK is divided from SYSCLK
+// by the defined prescaler. DIV_2 = PBCLK 1:2 with SYSCLK. [40Mhz]
+#pragma config FPBDIV       = DIV_1
+
 #pragma config FSOSCEN      = OFF
 
 //  Clock Control
