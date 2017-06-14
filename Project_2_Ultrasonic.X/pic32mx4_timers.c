@@ -74,3 +74,16 @@ void Reset_Timer4(void){
 uint32_t Read_Timer4(void){
     return TMR4;       // Return timer 4 value
 }
+
+void Timer4_Delay_ms(uint32_t DelayTime_ms){
+    Timer4_32bit_Syn_Init(); //Init Timer 4
+    Start_Timer4();          //Start Timer 4
+ 
+    //Error Detection 
+    if (DelayTime_ms > 107374){
+        DelayTime_ms = 107374;
+    }
+    
+    uint32_t Stop_Counts = DelayTime_ms * 40000000 / 1000;
+    while (Read_Timer4() <= Stop_Counts){}  
+}

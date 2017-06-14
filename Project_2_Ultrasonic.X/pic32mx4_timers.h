@@ -18,6 +18,7 @@ void Timer4_32bit_Syn_Init(void);
 void Start_Timer4(void);
 void Reset_Timer4(void);
 uint32_t Read_Timer4(void);
+void Timer4_Delay_ms(uint32_t DelayTime_ms);
 
 
 #endif	/* PIC32MX4_TIMERS_H */

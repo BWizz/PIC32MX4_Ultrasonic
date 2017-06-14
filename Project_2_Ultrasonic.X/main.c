@@ -13,21 +13,20 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-double Distance;
-double Distance_v2;
-#define CONV_FAC (1/(8000000) * 340.29) / 39.3701
-
+double Distance[256];
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
 void main(void)
 {
-    Ultrasonic_Init();
-    Timer4_32bit_Syn_Init();
+    int i = 0;
     while (1){
-     Distance = MeasureDistance();
-     SimpleCounterDelay(1000000);
-     Distance_v2 = MeasureDistance_v2();
+     Timer4_Delay_ms(1000); // 1 second delay
+     Distance[i] = MeasureDistance();
      int x = 1; // This is only hear for a break point for debugging.
+     i = i + 1;
+     if (i == 256){
+         i = 0;
+     }
     }
 }

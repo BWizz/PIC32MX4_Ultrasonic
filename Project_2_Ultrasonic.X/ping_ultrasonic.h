@@ -11,9 +11,7 @@
 void Ultrasonic_Init(void);
 void TriggerMeasurement(void);
 double GetDistance(void);
-double GetDistance_v2(void);
 double MeasureDistance(void);
-double MeasureDistance_v2(void);
 
 #endif	/* PING_ULTRASONIC_H */
 
