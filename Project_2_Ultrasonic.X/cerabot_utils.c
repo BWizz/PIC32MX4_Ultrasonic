@@ -3,17 +3,17 @@
 
 
 void SimpleCounterDelay(int CountLimit){
-    int x = 0;
+/* FUNCTION: SimpleCounterDelay
+ * PURPOSE: Software delay function. The function will run until the user 
+ * inputted number of counts is met, x > CountLimit.
+ * 
+ * INPUTS: 
+ *      - CountLimit [int]: Number of counts required to reach before function 
+ *        is returned
+ * LOCALS: 
+ *     - x [int]: Number of counts of for loop.
+ */    
+    int x;
     for (x = 0; x < CountLimit; x++){
     }  
-}
-
-void Timer1_Setup(){
-    
-    T1CONbits.ON = 1;
-}
-
-void Timer1(void){
-    
-    
 }

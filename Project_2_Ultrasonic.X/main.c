@@ -13,20 +13,15 @@
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
-double Distance[256];
+double test;
 /******************************************************************************/
 /* Main Program                                                               */
 /******************************************************************************/
 void main(void)
 {
-    int i = 0;
     while (1){
      Timer4_Delay_ms(1000); // 1 second delay
-     Distance[i] = MeasureDistance();
+     MeasureDistance(Ultra_Dist); //Measure object distance and update Ultra_Dist struc
      int x = 1; // This is only hear for a break point for debugging.
-     i = i + 1;
-     if (i == 256){
-         i = 0;
-     }
     }
 }

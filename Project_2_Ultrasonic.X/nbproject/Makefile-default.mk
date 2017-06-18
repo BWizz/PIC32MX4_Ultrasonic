@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=cerabot_utils.c pic32mx4_init.c ping_ultrasonic.c pic32mx4_timers.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=cerabot_utils.c ping_ultrasonic.c pic32mx4_timers.c main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/cerabot_utils.o ${OBJECTDIR}/pic32mx4_init.o ${OBJECTDIR}/ping_ultrasonic.o ${OBJECTDIR}/pic32mx4_timers.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/cerabot_utils.o.d ${OBJECTDIR}/pic32mx4_init.o.d ${OBJECTDIR}/ping_ultrasonic.o.d ${OBJECTDIR}/pic32mx4_timers.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/cerabot_utils.o ${OBJECTDIR}/ping_ultrasonic.o ${OBJECTDIR}/pic32mx4_timers.o ${OBJECTDIR}/main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/cerabot_utils.o.d ${OBJECTDIR}/ping_ultrasonic.o.d ${OBJECTDIR}/pic32mx4_timers.o.d ${OBJECTDIR}/main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/cerabot_utils.o ${OBJECTDIR}/pic32mx4_init.o ${OBJECTDIR}/ping_ultrasonic.o ${OBJECTDIR}/pic32mx4_timers.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/cerabot_utils.o ${OBJECTDIR}/ping_ultrasonic.o ${OBJECTDIR}/pic32mx4_timers.o ${OBJECTDIR}/main.o
 
 # Source Files
-SOURCEFILES=cerabot_utils.c pic32mx4_init.c ping_ultrasonic.c pic32mx4_timers.c main.c
+SOURCEFILES=cerabot_utils.c ping_ultrasonic.c pic32mx4_timers.c main.c
 
 
 CFLAGS=
@@ -112,12 +112,6 @@ ${OBJECTDIR}/cerabot_utils.o: cerabot_utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/cerabot_utils.o 
 	@${FIXDEPS} "${OBJECTDIR}/cerabot_utils.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/cerabot_utils.o.d" -o ${OBJECTDIR}/cerabot_utils.o cerabot_utils.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/pic32mx4_init.o: pic32mx4_init.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pic32mx4_init.o.d 
-	@${RM} ${OBJECTDIR}/pic32mx4_init.o 
-	@${FIXDEPS} "${OBJECTDIR}/pic32mx4_init.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pic32mx4_init.o.d" -o ${OBJECTDIR}/pic32mx4_init.o pic32mx4_init.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/ping_ultrasonic.o: ping_ultrasonic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ping_ultrasonic.o.d 
@@ -142,12 +136,6 @@ ${OBJECTDIR}/cerabot_utils.o: cerabot_utils.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/cerabot_utils.o.d 
 	@${RM} ${OBJECTDIR}/cerabot_utils.o 
 	@${FIXDEPS} "${OBJECTDIR}/cerabot_utils.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/cerabot_utils.o.d" -o ${OBJECTDIR}/cerabot_utils.o cerabot_utils.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/pic32mx4_init.o: pic32mx4_init.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pic32mx4_init.o.d 
-	@${RM} ${OBJECTDIR}/pic32mx4_init.o 
-	@${FIXDEPS} "${OBJECTDIR}/pic32mx4_init.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pic32mx4_init.o.d" -o ${OBJECTDIR}/pic32mx4_init.o pic32mx4_init.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/ping_ultrasonic.o: ping_ultrasonic.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 

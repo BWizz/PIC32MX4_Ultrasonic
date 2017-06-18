@@ -17,7 +17,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>cerabot_utils.c</itemPath>
-      <itemPath>pic32mx4_init.c</itemPath>
       <itemPath>ping_ultrasonic.c</itemPath>
       <itemPath>pic32mx4_timers.c</itemPath>
     </logicalFolder>
