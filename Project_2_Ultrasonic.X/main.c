@@ -1,3 +1,18 @@
+/*
+ * Developer: Brian Wisniewski
+ * Date: 7/05/16
+ * Revision: 9
+ * 
+ * PURPOSE:
+ * main.c is the main program to run and test PING Ultrasonic senor device driver
+ * running on the PIC32MX4 cerebot starterkit.
+ * 
+ * RESOURCES:
+ *  STARTERKIT: http://store.digilentinc.com/cerebot-32mx4-limited-time-see-chipkit-pro-mx4/ 
+ *  PROCESSOR (PIC32MX460F512L): http://www.microchip.com/wwwproducts/en/PIC32MX460F512L
+ *  COMPILER (XC32): http://ww1.microchip.com/downloads/en/DeviceDoc/50001686J.pdf 
+ *  SENSOR: https://www.parallax.com/sites/default/files/downloads/28015-PING-Sensor-Product-Guide-v2.0.pdf
+ */
 /******************************************************************************/
 /*  Files to Include                                                          */
 /******************************************************************************/

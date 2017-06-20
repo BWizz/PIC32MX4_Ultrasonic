@@ -1,6 +1,28 @@
+/*
+ * Developer: Brian Wisniewski
+ * Date: 7/05/16
+ * Revision: 2
+ * 
+ * PURPOSE:
+ * pic32mx4_timers.c contains 16bit & 32bit internal timer configurations and 
+ * necessary functions for the PIC32MX4 microprocessor. 
+ * 
+ * RESOURCES:
+ *  STARTERKIT: http://store.digilentinc.com/cerebot-32mx4-limited-time-see-chipkit-pro-mx4/ 
+ *  PROCESSOR (PIC32MX460F512L): http://www.microchip.com/wwwproducts/en/PIC32MX460F512L
+ *  COMPILER (XC32): http://ww1.microchip.com/downloads/en/DeviceDoc/50001686J.pdf 
+ */
+
+/******************************************************************************/
+/*  Files to Include                                                          */
+/******************************************************************************/
 #include <xc.h>
 #include <stdio.h>
 #include "pic32mx4_timers.h"
+/******************************************************************************/
+/* Functions                                                                  */
+/******************************************************************************/
+
 ///////////////////////////////////////////////////////////////////////////////
 /*
  *                         Timer 1 16bit Functions

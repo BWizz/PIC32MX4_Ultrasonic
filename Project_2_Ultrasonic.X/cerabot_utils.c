@@ -5,7 +5,7 @@
 void SimpleCounterDelay(int CountLimit){
 /* FUNCTION: SimpleCounterDelay
  * PURPOSE: Software delay function. The function will run until the user 
- * inputted number of counts is met, x > CountLimit.
+ * specified number of counts is met, x > CountLimit.
  * 
  * INPUTS: 
  *      - CountLimit [int]: Number of counts required to reach before function 
